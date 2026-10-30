@@ -1,0 +1,704 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>VELORA - Premium Fashion E-Commerce</title>
+  <meta name="description" content="Define Your Style. Own Your Story. Premium, modern, and minimalistic fashion e-commerce store featuring responsive design, shopping cart, wishlist, quick view, and live filtering." />
+  
+  <!-- Open Graph / Social Sharing -->
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="VELORA - Premium Fashion E-Commerce" />
+  <meta property="og:description" content="Define Your Style. Own Your Story. Premium, modern, and minimalistic fashion e-commerce store featuring responsive design, shopping cart, wishlist, quick view, and live filtering." />
+  <meta name="twitter:card" content="summary_large_image" />
+
+  <!-- Google Fonts: Cormorant Garamond (Editorial Luxury Serif) & Plus Jakarta Sans (Modern Clean Sans) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Pure CSS3 Stylesheet -->
+  <link rel="stylesheet" href="/css/style.css" />
+</head>
+<body>
+
+  <!-- =========================================================================
+       A. ANNOUNCEMENT BAR
+       ========================================================================= -->
+  <aside class="announcement-bar" id="announcement-bar" aria-label="Announcement">
+    <div class="container announcement-content">
+      <span class="announcement-badge">LIMITED TIME</span>
+      <span>SPECIAL OFFER: GET 20% OFF YOUR FIRST ORDER</span>
+      <span class="announcement-code copy-coupon-btn" data-code="VELORA20" title="Click to copy coupon">CODE: VELORA20</span>
+      <div class="countdown-box">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="12" cy="12" r="10"></circle>
+          <polyline points="12 6 12 12 16 14"></polyline>
+        </svg>
+        <span id="announcement-countdown">09h 42m 15s</span>
+      </div>
+      <button type="button" class="announcement-close" id="announcement-close" aria-label="Dismiss Announcement">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <line x1="18" y1="6" x2="6" y2="18"></line>
+          <line x1="6" y1="6" x2="18" y2="18"></line>
+        </svg>
+      </button>
+    </div>
+  </aside>
+
+  <!-- =========================================================================
+       B. HEADER / STICKY NAVIGATION BAR
+       ========================================================================= -->
+  <header class="header">
+    <div class="container nav-container">
+      <!-- Mobile Hamburger Button -->
+      <button type="button" class="hamburger-btn" id="hamburger-btn" aria-label="Toggle navigation menu">
+        <span class="hamburger-line"></span>
+        <span class="hamburger-line"></span>
+        <span class="hamburger-line"></span>
+      </button>
+
+      <!-- Brand Logo -->
+      <div class="logo-area">
+        <a href="#" class="brand-logo" aria-label="VELORA Homepage">
+          <span class="logo-mark">◆</span>
+          <span>VELORA</span>
+        </a>
+        <span class="brand-tagline">Define Your Style</span>
+      </div>
+
+      <!-- Desktop Navigation Menu -->
+      <nav class="nav-menu" aria-label="Main Navigation">
+        <a href="#hero" class="nav-link active">Home</a>
+        <a href="#shop-section" class="nav-link" data-filter="new">New Arrivals</a>
+        <a href="#shop-section" class="nav-link" data-filter="clothing">Clothing</a>
+        <a href="#shop-section" class="nav-link" data-filter="footwear">Footwear</a>
+        <a href="#shop-section" class="nav-link" data-filter="accessories">Accessories</a>
+        <a href="#sale-section" class="nav-link sale-link" data-filter="sale">Sale</a>
+      </nav>
+
+      <!-- Action Icons (Theme, Search, Wishlist, Cart) -->
+      <div class="header-actions">
+        <!-- Theme Toggle -->
+        <button type="button" class="icon-btn" id="theme-toggle-btn" aria-label="Toggle dark/light theme" title="Toggle Theme">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+          </svg>
+        </button>
+
+        <!-- Search Icon (Scrolls & Focuses Filter Search) -->
+        <a href="#shop-section" class="icon-btn" id="search-nav-btn" aria-label="Search collection" onclick="document.getElementById('search-input').focus();">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="11" cy="11" r="8"></circle>
+            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+          </svg>
+        </a>
+
+        <!-- Wishlist Icon with Live Count -->
+        <button type="button" class="icon-btn" id="wishlist-toggle-btn" aria-label="View Wishlist">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+          </svg>
+          <span class="badge-count" id="header-wishlist-count" style="display: none;">0</span>
+        </button>
+
+        <!-- Shopping Bag Icon with Live Count -->
+        <button type="button" class="icon-btn" id="cart-toggle-btn" aria-label="View Shopping Bag">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path>
+            <line x1="3" y1="6" x2="21" y2="6"></line>
+            <path d="M16 10a4 4 0 0 1-8 0"></path>
+          </svg>
+          <span class="badge-count" id="header-cart-count" style="display: none;">0</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Mobile Drawer Menu -->
+  <aside class="mobile-drawer" id="mobile-drawer" aria-label="Mobile Navigation">
+    <div class="drawer-header">
+      <div class="brand-logo" style="font-size: 1.5rem;">
+        <span class="logo-mark">◆</span> VELORA
+      </div>
+      <button type="button" class="drawer-close" id="mobile-drawer-close" aria-label="Close Menu">&times;</button>
+    </div>
+    <div class="mobile-menu-list">
+      <a href="#hero" class="mobile-nav-link">Home <span>→</span></a>
+      <a href="#shop-section" class="mobile-nav-link" data-filter="new">New Arrivals <span>→</span></a>
+      <a href="#shop-section" class="mobile-nav-link" data-filter="clothing">Clothing <span>→</span></a>
+      <a href="#shop-section" class="mobile-nav-link" data-filter="footwear">Footwear <span>→</span></a>
+      <a href="#shop-section" class="mobile-nav-link" data-filter="accessories">Accessories <span>→</span></a>
+      <a href="#sale-section" class="mobile-nav-link" data-filter="sale" style="color: var(--sale-badge);">Sale <span>→</span></a>
+    </div>
+    <div class="mobile-drawer-footer">
+      <button type="button" class="btn btn-secondary" id="mobile-theme-toggle-btn" style="color: var(--text-main); border-color: var(--surface-border); width: 100%;">
+        Toggle Theme
+      </button>
+      <div style="font-size: 0.8125rem; color: var(--text-muted); text-align: center;">
+        Define Your Style. Own Your Story.
+      </div>
+    </div>
+  </aside>
+
+  <!-- Shared Backdrop for Drawers -->
+  <div class="drawer-backdrop" id="drawer-backdrop"></div>
+
+  <!-- =========================================================================
+       C. HERO BANNER
+       ========================================================================= -->
+  <section class="hero-section" id="hero">
+    <img 
+      src="https://images.unsplash.com/photo-1490481651871-ab68de25d43d?auto=format&fit=crop&w=2000&q=85" 
+      alt="VELORA Luxury Editorial Fashion" 
+      class="hero-background"
+    />
+    <div class="hero-overlay"></div>
+    <div class="container hero-content">
+      <span class="hero-kicker">AUTUMN / WINTER 2026</span>
+      <h1 class="hero-title">ELEVATE YOUR EVERYDAY STYLE</h1>
+      <p class="hero-subtitle">
+        Discover timeless essentials and statement pieces designed for your lifestyle.
+      </p>
+      <div class="hero-actions">
+        <a href="#shop-section" class="btn btn-primary" onclick="window.VELORA && window.VELORA.setCategoryFilter('all');">
+          SHOP COLLECTION
+        </a>
+        <a href="#shop-section" class="btn btn-secondary" onclick="window.VELORA && window.VELORA.setCategoryFilter('new');">
+          EXPLORE NEW ARRIVALS
+        </a>
+      </div>
+    </div>
+
+    <!-- Features strip at bottom of hero -->
+    <div class="hero-features-strip">
+      <div class="container features-container">
+        <div class="feature-item">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="1" y="3" width="15" height="13"></rect><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"></polygon><circle cx="5.5" cy="18.5" r="2.5"></circle><circle cx="18.5" cy="18.5" r="2.5"></circle></svg>
+          <span>Free Express Delivery over ₹2,000</span>
+        </div>
+        <div class="feature-item">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+          <span>100% Certified Ethical Fabrics</span>
+        </div>
+        <div class="feature-item">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="23 4 23 10 17 10"></polyline><polyline points="1 20 1 14 7 14"></polyline><path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"></path></svg>
+          <span>Hassle-Free 14-Day Returns</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- =========================================================================
+       D. FEATURED CATEGORIES
+       ========================================================================= -->
+  <section class="categories-section" id="categories-section">
+    <div class="container">
+      <div class="text-center" style="margin-bottom: 48px;">
+        <span class="section-subtitle">Curated Wardrobe</span>
+        <h2 class="section-title">FEATURED CATEGORIES</h2>
+        <p class="section-desc">Explore tailored garments and iconic silhouettes engineered for everyday refinement.</p>
+      </div>
+
+      <div class="categories-grid">
+        <!-- 1. Men's Clothing -->
+        <div class="category-card" data-filter="clothing" tabindex="0" role="button" aria-label="Explore Men's Clothing">
+          <img 
+            src="https://images.unsplash.com/photo-1617137984095-74e4e5e3613f?auto=format&fit=crop&w=800&q=80" 
+            alt="Men's Clothing" 
+            class="category-img" 
+          />
+          <div class="category-overlay">
+            <span class="category-count">18 Items</span>
+            <h3 class="category-name">Men's Clothing</h3>
+            <span class="category-btn">Explore Collection →</span>
+          </div>
+        </div>
+
+        <!-- 2. Women's Clothing -->
+        <div class="category-card" data-filter="clothing" tabindex="0" role="button" aria-label="Explore Women's Clothing">
+          <img 
+            src="https://images.unsplash.com/photo-1485230895905-ec40ba36b9bc?auto=format&fit=crop&w=800&q=80" 
+            alt="Women's Clothing" 
+            class="category-img" 
+          />
+          <div class="category-overlay">
+            <span class="category-count">24 Items</span>
+            <h3 class="category-name">Women's Clothing</h3>
+            <span class="category-btn">Explore Collection →</span>
+          </div>
+        </div>
+
+        <!-- 3. Footwear -->
+        <div class="category-card" data-filter="footwear" tabindex="0" role="button" aria-label="Explore Footwear">
+          <img 
+            src="https://images.unsplash.com/photo-1595950653106-6c9ebd614d3a?auto=format&fit=crop&w=800&q=80" 
+            alt="Footwear" 
+            class="category-img" 
+          />
+          <div class="category-overlay">
+            <span class="category-count">14 Items</span>
+            <h3 class="category-name">Footwear</h3>
+            <span class="category-btn">Explore Collection →</span>
+          </div>
+        </div>
+
+        <!-- 4. Accessories -->
+        <div class="category-card" data-filter="accessories" tabindex="0" role="button" aria-label="Explore Accessories">
+          <img 
+            src="https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?auto=format&fit=crop&w=800&q=80" 
+            alt="Accessories" 
+            class="category-img" 
+          />
+          <div class="category-overlay">
+            <span class="category-count">16 Items</span>
+            <h3 class="category-name">Accessories</h3>
+            <span class="category-btn">Explore Collection →</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- =========================================================================
+       F. PRODUCT CATEGORIES / SHOPPING FILTERS & SEARCH
+       ========================================================================= -->
+  <section class="filter-toolbar-section" id="shop-section">
+    <div class="container">
+      <div class="text-center" style="margin-bottom: 32px;">
+        <span class="section-subtitle">Catalog & New Arrivals</span>
+        <h2 class="section-title">NEW ARRIVALS & COLLECTION</h2>
+        <p class="section-desc">Browse our seasonal portfolio of premium apparel, handmade footwear, and leather accessories.</p>
+      </div>
+
+      <div class="filter-toolbar">
+        <!-- Interactive Category Filters -->
+        <div class="category-filters" role="tablist" aria-label="Product categories">
+          <button type="button" class="filter-tab active" data-filter="all">All Products</button>
+          <button type="button" class="filter-tab" data-filter="clothing">Clothing</button>
+          <button type="button" class="filter-tab" data-filter="footwear">Footwear</button>
+          <button type="button" class="filter-tab" data-filter="accessories">Accessories</button>
+          <button type="button" class="filter-tab" data-filter="new">New Arrivals</button>
+          <button type="button" class="filter-tab" data-filter="sale">On Sale</button>
+        </div>
+
+        <!-- Search Box & Sort Controls -->
+        <div class="toolbar-controls">
+          <div class="search-box-wrapper">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <circle cx="11" cy="11" r="8"></circle>
+              <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+            </svg>
+            <input 
+              type="text" 
+              class="search-input" 
+              id="search-input" 
+              placeholder="Search products by name..." 
+              autocomplete="off"
+            />
+            <button type="button" class="search-clear-btn" id="search-clear-btn" aria-label="Clear search">&times;</button>
+          </div>
+
+          <div class="sort-wrapper">
+            <label for="sort-select" class="sort-label">Sort by:</label>
+            <select id="sort-select" class="sort-select" aria-label="Sort products">
+              <option value="popular">Popularity</option>
+              <option value="newest">Newest First</option>
+              <option value="low-high">Price: Low to High</option>
+              <option value="high-low">Price: High to Low</option>
+            </select>
+          </div>
+        </div>
+      </div>
+
+      <div class="products-count-bar">
+        <span id="products-count">Showing 16 products</span>
+        <span style="font-size: 0.8125rem;">Handcrafted Luxury · Guaranteed Quality</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- =========================================================================
+       E. NEW ARRIVALS & PRODUCTS GRID (12+ Products with full controls)
+       ========================================================================= -->
+  <section class="products-section">
+    <div class="container">
+      <div class="products-grid" id="products-grid">
+        <!-- Rendered dynamically by script.js -->
+      </div>
+    </div>
+  </section>
+
+  <!-- =========================================================================
+       G. FEATURED COLLECTION BANNER
+       ========================================================================= -->
+  <section class="featured-collection-section" id="essential-collection">
+    <img 
+      src="https://images.unsplash.com/photo-1445205170230-053b83016050?auto=format&fit=crop&w=2000&q=85" 
+      alt="The Essential Collection" 
+      class="collection-bg"
+    />
+    <div class="collection-overlay"></div>
+    <div class="container collection-content">
+      <span class="collection-subtitle">LIMITED EDITION</span>
+      <h2 class="collection-title">THE ESSENTIAL COLLECTION</h2>
+      <p class="collection-desc">
+        Discover versatile pieces that bring comfort, confidence and effortless style to every occasion.
+      </p>
+      
+      <div class="collection-highlights">
+        <div class="highlight-item"><span></span> 100% Organic Fibers</div>
+        <div class="highlight-item"><span></span> Precision Hand-Tailoring</div>
+        <div class="highlight-item"><span></span> Carbon-Neutral Delivery</div>
+      </div>
+
+      <a href="#shop-section" class="btn btn-primary" onclick="window.VELORA && window.VELORA.setCategoryFilter('all');">
+        DISCOVER COLLECTION
+      </a>
+    </div>
+  </section>
+
+  <!-- =========================================================================
+       H. SPECIAL OFFERS / SALE SECTION
+       ========================================================================= -->
+  <section class="sale-section" id="sale-section">
+    <div class="container">
+      <!-- Promotional Banner with Countdown -->
+      <div class="sale-promo-banner">
+        <div class="sale-banner-text">
+          <span class="sale-badge-pill">FLASH SALE · LIMITED TIME</span>
+          <h2 class="sale-banner-title">MID-SEASON LUXURY SALE</h2>
+          <p class="sale-banner-desc">Enjoy up to 40% discount across selected jackets, selvedge denim, footwear, and leather gear.</p>
+        </div>
+
+        <div class="sale-timer-card">
+          <span class="timer-label">OFFER EXPIRES IN</span>
+          <div class="sale-countdown">
+            <div class="timer-unit">
+              <span class="timer-val" id="sale-hours">09</span>
+              <span class="timer-sub">Hours</span>
+            </div>
+            <span style="font-size: 1.5rem; color: var(--accent); font-weight: 700;">:</span>
+            <div class="timer-unit">
+              <span class="timer-val" id="sale-mins">42</span>
+              <span class="timer-sub">Minutes</span>
+            </div>
+            <span style="font-size: 1.5rem; color: var(--accent); font-weight: 700;">:</span>
+            <div class="timer-unit">
+              <span class="timer-val" id="sale-secs">15</span>
+              <span class="timer-sub">Seconds</span>
+            </div>
+          </div>
+          <div class="coupon-copy-wrapper">
+            <span style="font-size: 0.75rem; color: rgba(255,255,255,0.7);">Use Code:</span>
+            <span class="coupon-code">VELORA20</span>
+            <button type="button" class="coupon-copy-btn copy-coupon-btn" data-code="VELORA20">Copy</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="text-center" style="margin-bottom: 36px;">
+        <span class="section-subtitle">Exclusive Markdowns</span>
+        <h3 class="section-title" style="font-size: 2rem;">FEATURED DEALS</h3>
+      </div>
+
+      <!-- Sale Products Grid -->
+      <div class="products-grid" id="sale-products-grid">
+        <!-- Rendered dynamically by script.js -->
+      </div>
+    </div>
+  </section>
+
+  <!-- =========================================================================
+       I. CUSTOMER TESTIMONIALS
+       ========================================================================= -->
+  <section class="testimonials-section" id="testimonials">
+    <div class="container">
+      <div class="text-center" style="margin-bottom: 56px;">
+        <span class="section-subtitle">Client Experiences</span>
+        <h2 class="section-title">WHAT OUR CLIENTS SAY</h2>
+        <p class="section-desc">Read reviews from discerning individuals who wear VELORA across the globe.</p>
+      </div>
+
+      <div class="testimonials-grid">
+        <!-- Review 1 -->
+        <div class="testimonial-card">
+          <div class="review-stars">★★★★★</div>
+          <p class="review-text">
+            "The fit and texture of the Cotton Hoodie and Relaxed Denim exceeded every expectation. You can instantly feel the artisan weight and quality of the organic cotton."
+          </p>
+          <div class="reviewer-profile">
+            <img 
+              src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=200&q=80" 
+              alt="Ananya Roy" 
+              class="reviewer-avatar" 
+            />
+            <div>
+              <div class="reviewer-name">Ananya Roy</div>
+              <div class="reviewer-title">Creative Director · Mumbai</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Review 2 -->
+        <div class="testimonial-card">
+          <div class="review-stars">★★★★★</div>
+          <p class="review-text">
+            "The Minimalist White Sneakers are extraordinary. They look just as sharp with tailored trousers as with casual denim. The insole comfort is truly unparalleled."
+          </p>
+          <div class="reviewer-profile">
+            <img 
+              src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=200&q=80" 
+              alt="Karan Singhania" 
+              class="reviewer-avatar" 
+            />
+            <div>
+              <div class="reviewer-name">Karan Singhania</div>
+              <div class="reviewer-title">Architect · Bengaluru</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Review 3 -->
+        <div class="testimonial-card">
+          <div class="review-stars">★★★★★</div>
+          <p class="review-text">
+            "VELORA proves that timeless minimal luxury doesn't require exorbitant retail markups. The leather craftsmanship on the wallet and bag is immaculate."
+          </p>
+          <div class="reviewer-profile">
+            <img 
+              src="https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=200&q=80" 
+              alt="Meera Kapoor" 
+              class="reviewer-avatar" 
+            />
+            <div>
+              <div class="reviewer-name">Meera Kapoor</div>
+              <div class="reviewer-title">Fashion Stylist · New Delhi</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- =========================================================================
+       J. NEWSLETTER SUBSCRIPTION
+       ========================================================================= -->
+  <section class="newsletter-section" id="newsletter">
+    <div class="container">
+      <div class="newsletter-card">
+        <span class="section-subtitle">THE VELORA SOCIETY</span>
+        <h2 class="section-title">STAY IN STYLE</h2>
+        <p class="section-desc" style="margin: 0 auto 32px;">
+          Subscribe to receive exclusive offers, fashion updates and early access to new collections.
+        </p>
+
+        <form class="newsletter-form" id="newsletter-form" novalidate>
+          <input 
+            type="email" 
+            class="newsletter-input" 
+            id="newsletter-email" 
+            placeholder="Enter your email address..." 
+            required 
+          />
+          <button type="submit" class="btn btn-primary" id="newsletter-submit-btn">
+            SUBSCRIBE
+          </button>
+        </form>
+
+        <div class="newsletter-feedback" id="newsletter-feedback"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- =========================================================================
+       K. FOOTER
+       ========================================================================= -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <!-- Column 1: Brand -->
+        <div class="footer-col footer-col-brand">
+          <a href="#" class="brand-logo" style="margin-bottom: 14px;">
+            <span class="logo-mark">◆</span> VELORA
+          </a>
+          <p>
+            Define Your Style. Own Your Story. Modern luxury apparel, footwear, and accessories designed with intentional minimalism.
+          </p>
+          <div class="social-links">
+            <a href="https://instagram.com" target="_blank" rel="noopener" class="social-icon-btn" aria-label="Instagram">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+            </a>
+            <a href="https://pinterest.com" target="_blank" rel="noopener" class="social-icon-btn" aria-label="Pinterest">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="4" x2="12" y2="20"></line><circle cx="12" cy="12" r="8"></circle></svg>
+            </a>
+            <a href="https://twitter.com" target="_blank" rel="noopener" class="social-icon-btn" aria-label="Twitter">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"></path></svg>
+            </a>
+            <a href="https://facebook.com" target="_blank" rel="noopener" class="social-icon-btn" aria-label="Facebook">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg>
+            </a>
+          </div>
+        </div>
+
+        <!-- Column 2: Shop -->
+        <div class="footer-col">
+          <h4 class="footer-title">SHOP</h4>
+          <ul class="footer-links">
+            <li><a href="#shop-section" onclick="window.VELORA && window.VELORA.setCategoryFilter('new');">New Arrivals</a></li>
+            <li><a href="#shop-section" onclick="window.VELORA && window.VELORA.setCategoryFilter('clothing');">Clothing</a></li>
+            <li><a href="#shop-section" onclick="window.VELORA && window.VELORA.setCategoryFilter('footwear');">Footwear</a></li>
+            <li><a href="#shop-section" onclick="window.VELORA && window.VELORA.setCategoryFilter('accessories');">Accessories</a></li>
+            <li><a href="#sale-section" onclick="window.VELORA && window.VELORA.setCategoryFilter('sale');">Sale & Offers</a></li>
+          </ul>
+        </div>
+
+        <!-- Column 3: Customer Service -->
+        <div class="footer-col">
+          <h4 class="footer-title">CUSTOMER SERVICE</h4>
+          <ul class="footer-links">
+            <li><a href="javascript:void(0)" onclick="alert('Contact VELORA Support: support@velora.luxury | Hotline: +91 (800) 245-8899');">Contact Us</a></li>
+            <li><a href="javascript:void(0)" onclick="alert('Frequently Asked Questions:\n1. Shipping: 2-3 business days express.\n2. Returns: 14-day complimentary pickup.\n3. Alterations: Free bespoke tailoring at select stores.');">FAQs</a></li>
+            <li><a href="javascript:void(0)" onclick="alert('Shipping Information: Complimentary express shipping across India on orders exceeding ₹2,000. Track orders via SMS & Email.');">Shipping Information</a></li>
+            <li><a href="javascript:void(0)" onclick="alert('Return Policy: We offer a 14-day hassle-free return window on unworn garments with original tags intact.');">Return Policy</a></li>
+          </ul>
+        </div>
+
+        <!-- Column 4: Information -->
+        <div class="footer-col">
+          <h4 class="footer-title">INFORMATION</h4>
+          <ul class="footer-links">
+            <li><a href="javascript:void(0)" onclick="alert('About VELORA: Founded in 2026, VELORA champions minimalistic architecture in modern garments, blending European tailoring with conscious luxury.');">About Us</a></li>
+            <li><a href="javascript:void(0)" onclick="alert('Privacy Policy: We value your personal confidentiality and never sell or transfer your customer records to third parties.');">Privacy Policy</a></li>
+            <li><a href="javascript:void(0)" onclick="alert('Terms & Conditions: Standard consumer protection guidelines apply. All pricing is inclusive of applicable GST.');">Terms & Conditions</a></li>
+            <li><a href="javascript:void(0)" onclick="alert('Sustainability: 100% of our packaging is biodegradable kraft paper and recyclable sugarcane polybags.');">Sustainability</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Bottom Bar -->
+      <div class="footer-bottom">
+        <p>&copy; 2026 VELORA. All Rights Reserved.</p>
+        <div class="payment-methods">
+          <span class="payment-badge">UPI</span>
+          <span class="payment-badge">VISA</span>
+          <span class="payment-badge">MASTERCARD</span>
+          <span class="payment-badge">AMEX</span>
+          <span class="payment-badge">APPLE PAY</span>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- =========================================================================
+       MODALS & SLIDE-OUT DRAWERS
+       ========================================================================= -->
+
+  <!-- Slide-out Cart Drawer -->
+  <aside class="cart-drawer" id="cart-drawer" aria-label="Shopping Cart">
+    <div class="cart-drawer-header">
+      <h3 class="cart-drawer-title">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path>
+          <line x1="3" y1="6" x2="21" y2="6"></line>
+          <path d="M16 10a4 4 0 0 1-8 0"></path>
+        </svg>
+        Your Bag
+      </h3>
+      <button type="button" class="drawer-close" id="cart-drawer-close" aria-label="Close Shopping Bag">&times;</button>
+    </div>
+
+    <!-- Free Shipping Progress Tracker -->
+    <div class="free-shipping-tracker">
+      <div id="shipping-tracker-notice">Add ₹2,000 to unlock <strong>Free Express Delivery</strong>!</div>
+      <div class="shipping-progress-bar">
+        <div class="shipping-progress-fill" id="shipping-progress-fill" style="width: 0%;"></div>
+      </div>
+    </div>
+
+    <!-- Cart Items Scroll List -->
+    <div class="cart-items-list" id="cart-items-list">
+      <!-- Injected by script.js -->
+    </div>
+
+    <!-- Cart Footer & Checkout -->
+    <div class="cart-drawer-footer">
+      <div class="coupon-input-group">
+        <input type="text" class="coupon-input" id="cart-coupon-input" placeholder="Promo Code (e.g. VELORA20)" />
+        <button type="button" class="coupon-apply-btn" id="cart-coupon-apply-btn">APPLY</button>
+      </div>
+
+      <div class="cart-summary-row">
+        <span>Subtotal</span>
+        <span id="cart-subtotal">₹0</span>
+      </div>
+
+      <div class="cart-summary-row" id="cart-discount-row" style="display: none; color: var(--sale-badge);">
+        <span>Promotional Discount</span>
+        <span id="cart-discount-val">-₹0</span>
+      </div>
+
+      <div class="cart-summary-row total-row">
+        <span>Estimated Total</span>
+        <span id="cart-total" style="color: var(--accent);">₹0</span>
+      </div>
+
+      <button type="button" class="btn btn-primary checkout-btn" id="cart-checkout-btn">
+        PROCEED TO CHECKOUT
+      </button>
+    </div>
+  </aside>
+
+  <!-- Slide-out Wishlist Drawer -->
+  <aside class="wishlist-drawer" id="wishlist-drawer" aria-label="Wishlist">
+    <div class="wishlist-drawer-header">
+      <h3 class="cart-drawer-title">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+        </svg>
+        Saved Items
+      </h3>
+      <button type="button" class="drawer-close" id="wishlist-drawer-close" aria-label="Close Wishlist">&times;</button>
+    </div>
+    <div class="wishlist-items-list" id="wishlist-items-list">
+      <!-- Injected by script.js -->
+    </div>
+  </aside>
+
+  <!-- Quick Product View Modal -->
+  <div class="modal-wrapper" id="quick-view-modal" role="dialog" aria-modal="true" aria-label="Product Quick View">
+    <div class="modal-dialog">
+      <button type="button" class="modal-close-btn" id="quick-view-close" aria-label="Close Quick View">&times;</button>
+      <div id="quick-view-dialog-content">
+        <!-- Injected dynamically by script.js -->
+      </div>
+    </div>
+  </div>
+
+  <!-- Simulated Checkout Modal -->
+  <div class="modal-wrapper" id="checkout-modal" role="dialog" aria-modal="true" aria-label="Checkout">
+    <div class="modal-dialog checkout-modal-content">
+      <button type="button" class="modal-close-btn" id="checkout-close" aria-label="Close Checkout">&times;</button>
+      <h3 style="font-family: var(--font-serif); font-size: 1.85rem; margin-bottom: 8px;">Express Checkout</h3>
+      <p style="font-size: 0.875rem; color: var(--text-muted); margin-bottom: 24px;">Complete your purchase with encrypted simulation.</p>
+      
+      <div id="checkout-modal-body">
+        <!-- Injected dynamically by script.js -->
+      </div>
+    </div>
+  </div>
+
+  <!-- Back to Top Button -->
+  <button type="button" class="back-to-top" id="back-to-top-btn" aria-label="Scroll to top of page" title="Back to top">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+      <polyline points="18 15 12 9 6 15"></polyline>
+    </svg>
+  </button>
+
+  <!-- Toast Container -->
+  <div class="toast-container" id="toast-container" aria-live="polite"></div>
+
+  <!-- Pure Vanilla JavaScript (ES6+) -->
+  <script type="module" src="/js/script.js"></script>
+</body>
+</html>

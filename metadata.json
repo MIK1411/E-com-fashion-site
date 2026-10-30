@@ -1,0 +1,6 @@
+{
+  "name": "VELORA - Premium Fashion E-Commerce",
+  "description": "Define Your Style. Own Your Story. Premium, modern, and minimalistic fashion e-commerce store featuring responsive design, shopping cart, wishlist, quick view, and live filtering.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
